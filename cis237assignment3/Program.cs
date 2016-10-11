@@ -10,6 +10,9 @@ namespace cis237assignment3
     {
         static void Main(string[] args)
         {
+            //Declaring a new User Interface and calling the one public method
+            UserInterface ui = new UserInterface();
+            ui.MainMenu();
         }
     }
 }

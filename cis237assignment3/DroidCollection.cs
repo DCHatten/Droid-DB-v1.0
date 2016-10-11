@@ -8,5 +8,10 @@ namespace cis237assignment3
 {
     class DroidCollection : IDroidCollection
     {
+        public List<Droid> droidList;
+
+        public void AddProtocolDroid() { }
+        public void AddJanitorDroid() { }
+        public void AddAstromechDroid() { }
     }
 }
