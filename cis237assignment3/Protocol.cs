@@ -9,7 +9,7 @@ namespace cis237assignment3
     class Protocol : Droid
     {
         private int mNumberLanguages;
-        private const decimal mCostPerLanguage = 50m;
+        private const decimal mCostPerLanguage = 500m;
 
         public override decimal TotalCost
         {
@@ -18,15 +18,8 @@ namespace cis237assignment3
         }
         public int NumberLanguages
         {
-            get
-            {
-                return mNumberLanguages;
-            }
-
-            set
-            {
-                mNumberLanguages = value;
-            }
+            get { return mNumberLanguages; }
+            set { mNumberLanguages = value; }
         }
         /// <summary>
         /// Constructor which uses the parent constructor and adds the number of languages, specific to the protocol droid
@@ -35,15 +28,20 @@ namespace cis237assignment3
         /// <param name="color"></param>
         /// <param name="material"></param>
         /// <param name="numberLanguages"></param>
-        public Protocol(string model, string color, string material, int numberLanguages) : base(model, color, material)
+        public Protocol(string name, string model, string color, string material, decimal baseCost, decimal totalCost, int numberLanguages)
+            : base(name, model, color, material, baseCost, totalCost)
         {
             mNumberLanguages = numberLanguages;
         }
+        /// <summary>
+        /// Default constructor of Protocol
+        /// </summary>
+        public Protocol() : base() { }
 
         public override string ToString()
         {
-            return base.ToString() + Environment.NewLine + "\t\tNumber of Languages: " + mNumberLanguages.ToString() + Environment.NewLine + 
-                "\t\tTotal Cost: " + mTotalCost.ToString("n2") + " credits";
+            return base.ToString() + Environment.NewLine + "\tNumber of Languages: " + mNumberLanguages.ToString() + Environment.NewLine + 
+                "\tTotal Cost: " + mTotalCost.ToString("n2") + " credits";
         }
         public override decimal CalculateTotalCost()
         {

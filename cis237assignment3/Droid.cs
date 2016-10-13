@@ -14,10 +14,11 @@ namespace cis237assignment3
         protected string mMaterial;
         protected string mModel;
         protected string mColor;
+        protected string mName;
         /// <summary>
         /// Backing field for the different costs of a droid
         /// </summary>
-        protected decimal mBaseCost = 500m;
+        public decimal mBaseCost;
         protected decimal mTotalCost;
         /// <summary>
         /// Property for the Total Cost of a droid
@@ -29,11 +30,14 @@ namespace cis237assignment3
         /// <param name="model"></param>
         /// <param name="color"></param>
         /// <param name="material"></param>
-        public Droid(string model, string color, string material)
+        public Droid(string name, string model, string color, string material, decimal baseCost, decimal totalCost)
         {
+            mName = name;
             mModel = model;
             mMaterial = material;
-            mModel = model;
+            mColor = color;
+            mBaseCost = baseCost;
+            mTotalCost = totalCost;
         }
         /// <summary>
         /// Default Constructor
@@ -45,14 +49,19 @@ namespace cis237assignment3
         /// <returns></returns>
         public override string ToString()
         {
-            return "Model: " + mModel + Environment.NewLine + 
-                "\t\tMaterial: " + mMaterial + Environment.NewLine + 
-                "\t\tColor: " + mColor + Environment.NewLine + 
-                "\t\tBase Cost: " + mBaseCost.ToString("n2") + " credits";
+            return "Designation: " + mName + Environment.NewLine +
+                "\tModel: " + mModel + Environment.NewLine +
+                "\tMaterial: " + mMaterial + Environment.NewLine +
+                "\tColor: " + mColor + Environment.NewLine +
+                "\tBase Cost: " + mBaseCost.ToString("n2") + " credits";
         }
         /// <summary>
         /// Method for calculating the total cost of a droid, based on the options selected
         /// </summary>
-        public abstract decimal CalculateTotalCost();
+        public virtual decimal CalculateTotalCost()
+        {
+            mTotalCost = mBaseCost;
+            return mTotalCost;
+        }
     }
 }
