@@ -8,9 +8,10 @@ namespace cis237assignment3
 {
     class Astromech : Utility
     {
+        //Backing Fields
         private bool mFireExtinguisher;
         private int mNumberShips;
-
+        //Getters and Setters
         public override decimal TotalCost
         {
             get { return mTotalCost; }
@@ -21,13 +22,11 @@ namespace cis237assignment3
             get { return mToolbox; }
             set { mToolbox = value; }
         }
-
         public override bool ComputerConnection
         {
             get { return mComputerConnection; }
             set { mComputerConnection = value; }
         }
-
         public override bool Arm
         {
             get { return mArm; }
@@ -43,7 +42,21 @@ namespace cis237assignment3
             get { return mNumberShips; }
             set { mNumberShips = value; }
         }
-
+        /// <summary>
+        /// Constructor which will pass all properties of the astromech class to first the utility class and then the droid 
+        /// class to create an astromech of type utility droid
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="model"></param>
+        /// <param name="color"></param>
+        /// <param name="material"></param>
+        /// <param name="baseCost"></param>
+        /// <param name="totalCost"></param>
+        /// <param name="toolbox"></param>
+        /// <param name="computerConnection"></param>
+        /// <param name="arm"></param>
+        /// <param name="fireExtinguisher"></param>
+        /// <param name="numberShips"></param>
         public Astromech(string name, string model, string color, string material, decimal baseCost, decimal totalCost,
             bool toolbox, bool computerConnection, bool arm, bool fireExtinguisher, int numberShips)
             : base(name, model, color, material, baseCost, totalCost, toolbox, computerConnection, arm)
@@ -51,8 +64,14 @@ namespace cis237assignment3
             mFireExtinguisher = fireExtinguisher;
             mNumberShips = numberShips;
         }
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public Astromech() : base() { }
-
+        /// <summary>
+        /// Method for calculating total cost based on base cost of the model plus options selected
+        /// </summary>
+        /// <returns></returns>
         public override decimal CalculateTotalCost()
         {
             decimal optionCost = 0m;
@@ -76,7 +95,11 @@ namespace cis237assignment3
             mTotalCost = mBaseCost + optionCost + (mNumberShips * 50m);
             return mTotalCost;
         }
-
+        /// <summary>
+        /// To String method which will concat all info from the droid to string and the utility to string with the
+        /// astromech info for printing to the screen.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + 

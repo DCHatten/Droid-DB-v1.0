@@ -13,7 +13,6 @@ namespace cis237assignment3
         /// as well as references to all the types of droids
         /// </summary>
         private DroidCollection droidCollection = new DroidCollection();
-        //private Droid droid;
         private Protocol protocol;
         private Janitor janitor;
         private Astromech astromech;
@@ -33,9 +32,10 @@ namespace cis237assignment3
         private bool trashCompactor;
         private bool vacuum;
         private bool fireExtinguisher;
-        private bool numberShips;
+        private int numberShips;
         /// <summary>
-        /// Method for creating a menu to select from various options
+        /// Method for creating a menu to select from the available options for interacting with
+        /// the program.
         /// </summary>
         public void MainMenu()
         {
@@ -63,7 +63,10 @@ namespace cis237assignment3
             MainMenu();
         }
         /// <summary>
-        /// Method to add a droid to the droid collection
+        /// Method to add a droid to the droid collection.
+        /// First prompts the user for a droid designation, then has them
+        /// select the options that apply to the Droid abstract class and add
+        /// those options to the base cost of the Droid.
         /// </summary>
         private void AddDroid()
         {
@@ -139,6 +142,11 @@ namespace cis237assignment3
                     break;
             }
         }
+        /// <summary>
+        /// Method for the adding of a protocol droid.
+        /// Prompts user to select number of languages, uses that to calculate the total cost
+        /// of the protocol droid, then passes that into the droid collection for storage.
+        /// </summary>
         private void AddProtocolDroid()
         {
             protocol = new Protocol();
@@ -164,38 +172,215 @@ namespace cis237assignment3
                     AddProtocolDroid();
                     break;
             }
+            protocol.mBaseCost = baseCost;
             protocol.NumberLanguages = numberLanguages;
             totalCost = protocol.CalculateTotalCost();
             droidCollection.AddProtocolDroid(name, model, color, material, baseCost, totalCost, numberLanguages);
         }
+        /// <summary>
+        /// Menu option for adding a utility droid.
+        /// Will first prompt for the options which apply to the Utility
+        /// Droid abstract class then prompt to choose a specification of utility droid.
+        /// </summary>
         private void AddUtilityDroid()
         {
-            Console.WriteLine("Please choose the number of languages spoken:");
-            Console.WriteLine("1. 6 Million");
-            Console.WriteLine("2. 7 Million");
-            Console.WriteLine("3. 8 Million");
+            Console.WriteLine("Does the droid have a toolbox? Y or N");
+            string toolboxChoice = Console.ReadLine();
+            switch (toolboxChoice)
+            {
+                case "Y":
+                    toolbox = true;
+                    break;
+                case "y":
+                    toolbox = true;
+                    break;
+                case "N":
+                    toolbox = false;
+                    break;
+                case "n":
+                    toolbox = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddUtilityDroid();
+                    break;
+            }
+            Console.WriteLine("Does the droid have a computer connection? Y or N");
+            string computerChoice = Console.ReadLine();
+            switch (computerChoice)
+            {
+                case "Y":
+                    computerConnection = true;
+                    break;
+                case "y":
+                    computerConnection = true;
+                    break;
+                case "N":
+                    computerConnection = false;
+                    break;
+                case "n":
+                    computerConnection = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddUtilityDroid();
+                    break;
+            }
+            Console.WriteLine("Does the droid have an arm? Y or N");
+            string armChoice = Console.ReadLine();
+            switch (armChoice)
+            {
+                case "Y":
+                    arm = true;
+                    break;
+                case "y":
+                    arm = true;
+                    break;
+                case "N":
+                    arm = false;
+                    break;
+                case "n":
+                    arm = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddUtilityDroid();
+                    break;
+            }
+            Console.WriteLine("Please choose the model of Utility Droid:");
+            Console.WriteLine("1. Janitor");
+            Console.WriteLine("2. Astromech");
+            string modelChoice = Console.ReadLine();
+            switch (modelChoice)
+            {
+                case "1":
+                    model = "Janitor";
+                    baseCost += 200m;
+                    AddJanitorDroid();
+                    break;
+                case "2":
+                    model = "Astromech";
+                    baseCost += 500m;
+                    AddAstromechDroid();
+                    break;
+            }
         }
+        /// <summary>
+        /// Method which will prompt the user for Astromech droid options, calculate the
+        /// total cost of the finished droid, then add the droid to the Droid Collection
+        /// for storage.
+        /// </summary>
         private void AddAstromechDroid()
         {
             astromech = new Astromech();
-            Console.WriteLine("Please choose the number of languages spoken:");
-            Console.WriteLine("1. 6 Million");
-            Console.WriteLine("2. 7 Million");
-            Console.WriteLine("3. 8 Million");
-
-            
+            Console.WriteLine("Does the droid have a fire extinguisher? Y or N");
+            string fireExtinguisherChoice = Console.ReadLine();
+            switch (fireExtinguisherChoice)
+            {
+                case "Y":
+                    fireExtinguisher = true;
+                    break;
+                case "y":
+                    fireExtinguisher = true;
+                    break;
+                case "N":
+                    fireExtinguisher = false;
+                    break;
+                case "n":
+                    fireExtinguisher = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddAstromechDroid();
+                    break;
+            }
+            Console.WriteLine("Please choose the number of ship models the droid can service");
+            Console.WriteLine("1. 10 models (Civilian Edition)");
+            Console.WriteLine("2. 50 models (Military Edition)");
+            string shipChoice = Console.ReadLine();
+            switch (shipChoice)
+            {
+                case "1":
+                    numberShips = 10;
+                    astromech.NumberShips = 10;
+                    break;
+                case "2":
+                    numberShips = 50;
+                    astromech.NumberShips = 50;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must select from available options.");
+                    AddAstromechDroid();
+                    break;
+            }
+            astromech.mBaseCost = baseCost;
+            astromech.FireExtinguisher = fireExtinguisher;
+            astromech.Arm = arm;
+            astromech.ComputerConnection = computerConnection;
+            astromech.ToolBox = toolbox;            
             totalCost = astromech.CalculateTotalCost();
+            droidCollection.AddAstromechDroid(name, model, color, material, baseCost, 
+                totalCost, toolbox, computerConnection, arm, fireExtinguisher, numberShips);
         }
+        /// <summary>
+        /// Method for adding a Janitor droid.  Will prompt the user for options which apply to
+        /// the Janitor droid class, calculate the cost of the finished droid, then pass the droid
+        /// to the droid collection for storage.
+        /// </summary>
         private void AddJanitorDroid()
         {
             janitor = new Janitor();
-            Console.WriteLine("Please choose the number of languages spoken:");
-            Console.WriteLine("1. 6 Million");
-            Console.WriteLine("2. 7 Million");
-            Console.WriteLine("3. 8 Million");
-
-
+            Console.WriteLine("Does the droid have a trash compactor? Y or N");
+            string trashCompactorChoice = Console.ReadLine();
+            switch (trashCompactorChoice)
+            {
+                case "Y":
+                    trashCompactor = true;
+                    break;
+                case "y":
+                    trashCompactor = true;
+                    break;
+                case "N":
+                    trashCompactor = false;
+                    break;
+                case "n":
+                    trashCompactor = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddJanitorDroid();
+                    break;
+            }
+            Console.WriteLine("Does the droid have a vacuum? Y or N");
+            string vacuumChoice = Console.ReadLine();
+            switch (vacuumChoice)
+            {
+                case "Y":
+                    vacuum = true;
+                    break;
+                case "y":
+                    vacuum = true;
+                    break;
+                case "N":
+                    vacuum = false;
+                    break;
+                case "n":
+                    vacuum = false;
+                    break;
+                default:
+                    Console.WriteLine("Error: You must choose a valid option.");
+                    AddJanitorDroid();
+                    break;
+            }
+            janitor.mBaseCost = baseCost;
+            janitor.TrashCompactor = trashCompactor;
+            janitor.Vacuum = vacuum;
+            janitor.ComputerConnection = computerConnection;
+            janitor.ToolBox = toolbox;
+            janitor.Arm = arm;
             totalCost = janitor.CalculateTotalCost();
+            droidCollection.AddJanitorDroid(name, model, color, material, baseCost,
+                totalCost, toolbox, computerConnection, arm, trashCompactor, vacuum);
         }
         /// <summary>
         /// Method for printing the droid collection to the screen

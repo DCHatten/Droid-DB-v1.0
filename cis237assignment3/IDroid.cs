@@ -8,7 +8,14 @@ namespace cis237assignment3
 {
     interface IDroid
     {
+        /// <summary>
+        /// Defining the Calculate Total Cost method that all classes that implement this interface will use
+        /// </summary>
+        /// <returns></returns>
         decimal CalculateTotalCost();
+        /// <summary>
+        /// Defining a getter and setter for the total cost determined in the previous method
+        /// </summary>
         decimal TotalCost { get; set; }
     }
 }
