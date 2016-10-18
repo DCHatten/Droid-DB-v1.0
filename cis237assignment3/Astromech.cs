@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Astromech classes inherits from Utility and, subsequently, Droid classes.
+/// Also contains methods that are unique to the Astromech droid type.
+/// </summary>
 namespace cis237assignment3
 {
     class Astromech : Utility
@@ -104,7 +108,7 @@ namespace cis237assignment3
         {
             return base.ToString() + Environment.NewLine + 
                 "\tFire Extinguisher: " + mFireExtinguisher.ToString() + Environment.NewLine +
-                "\tNumber of Ships: " + mNumberShips.ToString() + Environment.NewLine + 
+                "\tNumber of Ships: " + mNumberShips.ToString() + " ships" + Environment.NewLine + 
                 "\tTotal Cost: " + mTotalCost.ToString("n2") + " credits";
         }
     }

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Utility class inherits from Droid class but is also abstract as all utility droids should be 
+/// of a more specific type, such as janitor or astromech.
+/// </summary>
 namespace cis237assignment3
 {
     abstract class Utility : Droid

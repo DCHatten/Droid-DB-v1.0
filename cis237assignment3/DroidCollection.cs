@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// DroidCollection class, defines the list variable where all created droid data will be stored.
+/// Also has methods for adding droids to the collection using the constructors of the other classes.
+/// </summary>
 namespace cis237assignment3
 {
     class DroidCollection

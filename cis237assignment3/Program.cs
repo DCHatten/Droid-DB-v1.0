@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Main project method which calls the user interface class and will initiate the remainder of the program
+/// </summary>
 namespace cis237assignment3
 {
     class Program

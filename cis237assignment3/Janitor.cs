@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Janitor class which inherits from Utility and subsequently the Droid class.
+/// Has various methods specific to the janitor droid type.
+/// </summary>
 namespace cis237assignment3
 {
     class Janitor : Utility

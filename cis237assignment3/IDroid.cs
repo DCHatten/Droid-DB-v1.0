@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// IDroid interface which defines a couple of methods which all droid types will use
+/// </summary>
 namespace cis237assignment3
 {
     interface IDroid

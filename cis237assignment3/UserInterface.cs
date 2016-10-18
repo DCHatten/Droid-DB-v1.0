@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// User interface class which pulls data from the user, calls methods from the other classes to
+/// process/manipulate that data, and provides feedback to the user.
+/// </summary>
 namespace cis237assignment3
 {
     class UserInterface

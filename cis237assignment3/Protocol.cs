@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Protocol class extends the Droid class, and contains methods that are specific to the protocol droid type.
+/// </summary>
 namespace cis237assignment3
 {
     class Protocol : Droid

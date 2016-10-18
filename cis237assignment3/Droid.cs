@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// David Hatten
+/// Droid class which defines basic characteristics which all child classes will posess.
+/// The class is abstract as all droid types should have a more specific type such as protocol.
+/// Also implements the IDroid interface.
+/// </summary>
 namespace cis237assignment3
 {
     abstract class Droid : IDroid
